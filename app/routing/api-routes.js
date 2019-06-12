@@ -25,6 +25,7 @@ module.exports = function (app) {
             // console.log(friends[i].name); //
             totalDifference = 0;
 
+            // 4loop goes through the friends and goes through their scores //
             for (var j = 0; j < friends[i].scores[j]; j++) {
 
                 totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
@@ -38,6 +39,8 @@ module.exports = function (app) {
             }
         }
         friends.push(userData);
+        //returns json for best match, doesnt work//
+        //fixed//
         res.json(bestFriendMatch);
     });
 }
