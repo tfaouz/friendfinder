@@ -150,7 +150,7 @@
         <!-- create a submit button -->
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
+        <button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
                 aria-hidden="true"></i>
             Submit</button>
 
@@ -210,11 +210,12 @@
         for (var selector in config) {
             $(selector).chosen(config[selector]);
         }
-
+        //console.log($)
         // Capture the form inputs
         $("#submit").on("click", function (event) {
             event.preventDefault();
             // Form validation
+            //console.log("works")
             function validateForm() {
                 var isValid = true;
                 $(".form-control").each(function () {
@@ -228,7 +229,7 @@
                     }
                 });
                 return isValid;
-            }
+            };
 
             // ON CLICK NO LONGER WORKS//
 
