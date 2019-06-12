@@ -6,4 +6,8 @@ module.exports = function (app) {
         res.json(friends);
     });
     //allows to view friends//
+
+    app.post("/api/friends", function (req, res) {
+
+    });
 }
