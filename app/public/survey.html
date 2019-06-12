@@ -145,14 +145,16 @@
         <br>
         <!-- create a submit button -->
 
+        <!-- Submit Button -->
         <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
-                aria-hidden="true"></i>See Results</button>
+                aria-hidden="true"></i>
+            Submit</button>
 
         <hr>
-
         <footer class="footer">
             <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/tfaouz">GitHub Repo</a></p>
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/tfaouz/friendfinder">GitHub
+                        Repo</a></p>
             </div>
         </footer>
 
@@ -160,9 +162,25 @@
 
 
     <script type="text/javascript">
-
-        // keeps bad data out
-
+        var config = {
+            ".chosen-select": {},
+            ".chosen-select-deselect": {
+                allow_single_deselect: true
+            },
+            ".chosen-select-no-single": {
+                disable_search_threshold: 10
+            },
+            ".chosen-select-no-results": {
+                no_results_text: "Oops, nothing found!"
+            },
+            ".chosen-select-width": {
+                width: "95%"
+            }
+        };
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+        // Capture the form inputs
         $("#submit").on("click", function (event) {
             event.preventDefault();
             // Form validation
@@ -181,9 +199,9 @@
                 return isValid;
             }
 
-
+            // If all required fields are filled
             if (validateForm()) {
-                // Creates an object for the user"s data if everything is correct
+                // Create an object for the user"s data
                 var userData = {
                     name: $("#name").val(),
                     photo: $("#photo").val(),
@@ -200,9 +218,17 @@
                         $("#q10").val()
                     ]
                 };
+                // help from video //
+                var currentURL = window.location.origin;
+
+                $.post(currentURL + "/api/friends", userData), function (data) {
+                    alert("working")
+                }
+            };
+        });
+
 
     </script>
-
 </body>
 
 </html>
