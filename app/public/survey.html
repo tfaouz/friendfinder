@@ -160,6 +160,7 @@
 
     </div>
 
+    <!-- modal goes here -->
 
     <script type="text/javascript">
         var config = {
@@ -180,6 +181,7 @@
         for (var selector in config) {
             $(selector).chosen(config[selector]);
         }
+
         // Capture the form inputs
         $("#submit").on("click", function (event) {
             event.preventDefault();
@@ -198,6 +200,9 @@
                 });
                 return isValid;
             }
+
+            // ON CLICK NO LONGER WORKS//
+
 
             // If all required fields are filled
             if (validateForm()) {
