@@ -14,6 +14,8 @@ app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
 
 app.use(bodyParser.text({ type: 'text/html' }))
 
+//enables api routes to connect//
+require("./app/routing/api-routes.js")(app)
 require("./app/routing/html-routes.js")(app)
 // enables html routes to connect to server //
 
