@@ -248,7 +248,14 @@
                 // help from video //
                 var currentURL = window.location.origin;
 
+                // ajax call 
+
                 $.post(currentURL + "/api/friends", userData), function (data) {
+                    // not working might be spelled wrong
+                    $("#matchName").text(data.name);
+                    $("#matchImg").attr("src", data.photo);
+
+                    //shows modal with match
                     $("#resultsModal").modal("toggle");
                     //alert("working")
                 }
