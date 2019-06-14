@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
     <!-- Font Awesome Glyphicons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
@@ -17,10 +16,10 @@
     <!-- changes what selections for user look like -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+
 </head>
 
 <body>
-
     <div class="container">
 
         <h2>Survey Questions</h2>
@@ -150,10 +149,9 @@
         <!-- create a submit button -->
 
         <!-- Submit Button -->
-        <button class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle"
-                aria-hidden="true"></i>
+        <button class="btn btn-primary btn-lg btn-block" id="submit">
+            <i class="fa fa-check-circle" aria-hidden="true"></i>
             Submit</button>
-
         <hr>
         <footer class="footer">
             <div class="container">
@@ -161,7 +159,6 @@
                         Repo</a></p>
             </div>
         </footer>
-
     </div>
 
     <!-- modal goes here -->
@@ -186,13 +183,8 @@
 
         </div>
     </div>
-
-
-    <script type="text/javascript">
-
-        // chosen css from https://css-tricks.com/chosen/
-
-        var config = {
+    <script>
+        let config = {
             ".chosen-select": {},
             ".chosen-select-deselect": {
                 allow_single_deselect: true
@@ -215,29 +207,22 @@
         $("#submit").on("click", function (event) {
             event.preventDefault();
             // Form validation
-            //console.log("works")
-            function validateForm() {
-                var isValid = true;
-                $(".form-control").each(function () {
-                    if ($(this).val() === "") {
-                        isValid = false;
-                    }
-                });
-                $(".chosen-select").each(function () {
-                    if ($(this).val() === "") {
-                        isValid = false;
-                    }
-                });
-                return isValid;
-            };
-
-            // ON CLICK NO LONGER WORKS//
-
-
+            let isValid = true;
+            $(".form-control").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
+            $(".chosen-select").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                }
+            });
             // If all required fields are filled
-            if (validateForm()) {
+            console.log(`is this valid ${isValid}`)
+            if (isValid) {
                 // Create an object for the user"s data
-                var userData = {
+                let userData = {
                     name: $("#name").val(),
                     photo: $("#photo").val(),
                     scores: [
@@ -254,7 +239,7 @@
                     ]
                 };
                 // help from video //
-                var currentURL = window.location.origin;
+                let currentURL = window.location.origin;
 
                 // ajax call 
 
@@ -264,13 +249,12 @@
                     $("#matchImg").attr("src", data.photo);
 
                     //shows modal with match
+                    console.log(`got data ${data}`);
                     $("#resultsModal").modal("toggle");
                     //alert("working")
                 }
             };
         });
-
-
     </script>
 </body>
 

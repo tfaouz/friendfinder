@@ -1,5 +1,4 @@
-var friends = [
-
+const friends = [
     {
         "name": "Steve",
         "photo": "https://parade.com/wp-content/uploads/2017/09/montel-williams-new-series-ftr.jpg",

@@ -1,21 +1,19 @@
-var friends = require("../data/friends");
+const friends = require("../data/friends");
 
 module.exports = function (app) {
-
     app.get("/api/friends", function (req, res) {
         res.json(friends);
     });
     //allows to view friends//
 
     app.post("/api/friends", function (req, res) {
-
-        var bestFriendMatch = {
+        let bestFriendMatch = {
             name: "",
             photo: "",
             friendDifference: 1000
         };
         // console.log(req.body); //
-        var userData = req.body;
+        let userData = req.body;
         var userScores = userData.scores;
         // console.log(userScores) //
 
@@ -41,6 +39,7 @@ module.exports = function (app) {
         friends.push(userData);
         //returns json for best match, doesnt work//
         //fixed//
+        console.log(`returning best friends match: ${bestFriendMatch}`);
         res.json(bestFriendMatch);
     });
 }
