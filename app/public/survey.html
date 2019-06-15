@@ -246,15 +246,16 @@
 
                 fetch(url, {
                     method: 'POST',
-                    body: userData,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
                 }).then(response => {
                     return response.json();
                 }).then(function (data) {
-                    $("#matchName").text(data.name);
-                    $("#matchImg").attr("src", data.photo);
-
-                    //shows modal with match
                     console.log(`got data ${JSON.stringify(data)}`);
+                    $("#match-name").text(data.name);
+                    $("#match-img").attr("src", data.photo);
                     $("#resultsModal").modal("toggle");
                 }).catch(error => console.error(`Error: ${error}`));
             };
